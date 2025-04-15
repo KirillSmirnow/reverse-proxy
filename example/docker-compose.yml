@@ -1,0 +1,16 @@
+services:
+  reverse-proxy:
+    build:
+      dockerfile: reverse-proxy.Dockerfile
+    restart: always
+    environment:
+      TLS_DOMAINS: hello.example.com beta.example.com
+      EMAIL: owner-mail@example.com
+    ports:
+      - 80:80
+      - 443:443
+      - 2222:2222
+    volumes:
+      - letsencrypt:/etc/letsencrypt
+volumes:
+  letsencrypt:
