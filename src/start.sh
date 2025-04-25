@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+nginx
+
 for domain in $TLS_DOMAINS; do
   echo "TLS for <$domain>"
   certbot --non-interactive \
@@ -8,6 +10,4 @@ for domain in $TLS_DOMAINS; do
     --domain "$domain"
 done
 
-nginx -s stop
-sleep 0.5
-nginx -g 'daemon off;'
+sleep infinity
